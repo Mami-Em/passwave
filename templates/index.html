@@ -1,0 +1,47 @@
+{% extends 'layouts.html' %}
+{% block title %}
+    Welcome
+{% endblock title %}
+<!-- ========================== -->
+{% block head %}
+    <h1>You are not logged in.</h1>
+{% endblock head %}
+<!-- ========================== -->
+{% block body %}
+    <!-- not a member yet -->
+    <h3>Not registered yet?</h3>
+    <h6>Please fill the form</h6>
+    <form action="{{ url_for('registering') }}" onsubmit="return check()" method="post">
+        Choose your username:
+        <input type="text" autocomplete="off" name="name" id="" placeholder="username" required>
+        <br>
+        Choose your password:
+        <input type="password" autocomplete="off" name="password" id="password" placeholder="password" required>
+        <br>
+        Confirm your password:
+        <input type="password" autocomplete="off" name="" id="password_check" required>
+        <br>
+        <input type="submit" value="register">
+    </form>
+    <h2>Or</h2>
+    <h3>Already have an accout</h3>
+    <a href="{{ url_for('login') }}">login</a>
+{% endblock body %}
+<!-- ========================== -->
+{% block script %}
+<script>
+    // check
+    function check() {
+        var password = document.querySelector("#password").value;
+        var password_check = document.querySelector("#password_check").value;
+        if (password === password_check) {
+            return true;
+        } else {
+            alert('The passwords must match!');
+            return false;
+        };
+    };
+</script>
+    
+{% endblock script %}
+<!-- ========================== -->

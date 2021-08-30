@@ -1,0 +1,25 @@
+{% extends 'layouts.html' %}
+{% block title %}
+    Table
+{% endblock title %}
+<!-- ========================== -->
+{% block head %}
+    <h1>Here is a list of your recent activities</h1>
+{% endblock head %}
+<!-- ========================== -->
+{% block body %}
+    {% for tab in table %}
+        <ul>
+            <li>Name of the app: {{ tab.appname }}</li>
+            <li>Name used: {{ tab.nameused }}</li>
+            <li>Passwword used: {{ tab.passwordused }}</li>
+        </ul>
+        {% else %}
+        No activity yet
+    {% endfor %}
+{% endblock body %}
+<!-- ========================== -->
+{% block script %}
+    
+{% endblock script %}
+<!-- ========================== -->

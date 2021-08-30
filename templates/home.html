@@ -1,0 +1,39 @@
+{% extends 'layouts.html' %}
+{% block title %}
+    Home
+{% endblock title %}
+<!-- ========================== -->
+{% block head %}
+    <h1>Welcome!</h1>
+{% endblock head %}
+<!-- ========================== -->
+{% block body %}
+{% for u in user %}
+    <p>Hi, {{ u.name }}! It's been a while.</p>
+
+    <h3>Add new password</h3>
+    <p>please fill the form</p>
+    <form action="{{ url_for('insert_data') }}" method="post">
+        Name of the app:
+        <input type="text" name="appName" id="" autocomplete="off" required>
+        <br>
+        Name/email used:
+        <input type="text" name="nameUsed" id="" autocomplete="off" required>
+        <br>
+        Password used:
+        <input type="text" name="passwordUsed" id="" autocomplete="off" required>
+        <input type="text" name="id" id="" value="{{ u.id }}" hidden>
+        <br>
+        <input type="submit" value="submit">
+    </form>
+    <h2>Or</h2>
+    <a href="{{ url_for('list') }}">See all my lists</a>
+    {% endfor %}
+    
+    <a href="{{ url_for('logout') }}">Logout</a>.
+{% endblock body %}
+<!-- ========================== -->
+{% block script %}
+    
+{% endblock script %}
+<!-- ========================== -->
