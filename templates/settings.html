@@ -4,20 +4,24 @@
 {% endblock title %}
 <!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 {% block head %}
+{% if session.name %}
 <div class="ui segment" style="border-radius: 0;">
-    <div class="ui inverted violet menu">
-        {% for u in user %}
-        <a href="#" class="item"><i class="fas fa-user-secret fa-2x"></i></a>
-        {% endfor %}
-      <div class="right violet menu">
-        <a class="active item"><i class="fas fa-cogs fa-2x"></i></a>
-        <a href="{{ url_for('logout') }}" class="item"><i class="fas fa-sign-out-alt fa-2x"></i></a>
-      </div>
+  <div class="ui inverted violet menu">
+      <a href="{{ url_for('homepage', name = session.name) }}" class="item"><i class="fas fa-user-secret fa-2x"></i></a>
+    <div class="right violet menu">
+      <a class="active item"><i class="fas fa-cogs fa-2x"></i></a>
+      <a href="{{ url_for('logout') }}" class="item"><i class="fas fa-sign-out-alt fa-2x"></i></a>
     </div>
-</div> 
+  </div>
+</div>
+{% else %}
+  You are not loged in. Please log in first.
+{% endif %}
+
 {% endblock head %}
 <!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 {% block body %}
+{% if session.name %}
 <div class="ui grid"><div class="column"></div></div>
 <!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 <div class="ui grid stackable">
@@ -85,6 +89,11 @@
 </div>
 <!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 <div class="ui grid"><div class="column"></div></div>
+  
+{% else %}
+  ..
+{% endif %}
+
 {% endblock body %}
 <!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 {% block script %}

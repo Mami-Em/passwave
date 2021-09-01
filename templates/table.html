@@ -10,7 +10,7 @@
         <a class="active item"><i class="fas fa-user-secret fa-2x"></i></a>
         <div class="right violet menu">
             {% for u in user %}
-            <a href="#" class="item"><i class="fas fa-cogs fa-2x"></i></a>
+            <a href="{{ url_for('settings') }}" class="item"><i class="fas fa-cogs fa-2x"></i></a>
             {% endfor %}
             <a href="{{ url_for('logout') }}" class="item"><i class="fas fa-sign-out-alt fa-2x"></i></a>
         </div>

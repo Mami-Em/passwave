@@ -51,13 +51,11 @@ def login_process_():
         return render_template("error.html", message = "No such user!")
 # =========================================================================
 
-# @app.route("/settings")
-# def settings():
-#     if not session.get("name"):
-#         return redirect("/")
-#     name = session["name"]
-#     user = db.execute(f"SELECT * FROM human WHERE name = {name}").fetchall()
-#     return render_template("settings.html", user = user)
+@app.route("/settings")
+def settings():
+    if not session.get("name"):
+        return redirect("/")
+    return render_template("settings.html")
 
 @app.route("/homepage/<string:name>")
 def homepage(name):
