@@ -2,24 +2,115 @@
 {% block title %}
     Table
 {% endblock title %}
-<!-- ========================== -->
+<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 {% block head %}
-    <h1>Here is a list of your recent activities</h1>
+<!-- header -->
+<div class="ui segment" style="border-radius: 0;">
+    <div class="ui inverted violet menu">
+        <a class="active item"><i class="fas fa-user-secret fa-2x"></i></a>
+        <div class="right violet menu">
+            {% for u in user %}
+            <a href="#" class="item"><i class="fas fa-cogs fa-2x"></i></a>
+            {% endfor %}
+            <a href="{{ url_for('logout') }}" class="item"><i class="fas fa-sign-out-alt fa-2x"></i></a>
+        </div>
+    </div>
+</div> 
+<!-- $$$$$$$$$$$$$$$$$ -->
 {% endblock head %}
-<!-- ========================== -->
+<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 {% block body %}
-    {% for tab in table %}
-        <ul>
-            <li>Name of the app: {{ tab.appname }}</li>
-            <li>Name used: {{ tab.nameused }}</li>
-            <li>Passwword used: {{ tab.passwordused }}</li>
-        </ul>
-        {% else %}
-        No activity yet
-    {% endfor %}
-{% endblock body %}
-<!-- ========================== -->
-{% block script %}
+    <!-- $$$$$$$$$$$$$$$$$ -->
+    <div class="ui grid"><div class="column"></div></div>
+    <!-- $$$$$$$$$$$$$$$$$ -->
+    <div class="ui grid stackable">
+        <div class="two column"></div>
+        <div class="twelve wide column centered">
+            <!-- header -->
+            <h2 class="ui icon grey header" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                <i class="fas fa-user-secret fa-3x"></i>
+                {% for u in user %}
+                <div class="content">You are Loged in as {{ u.name }}</div>
+                {% endfor %}
+            </h2>
+            <!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+            <div class="ui horizontal divider" style="color: #600fe2;">
+                <button class="ui violet button" onclick="modal()">new passwords</button>
+            </div>
+            <!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+            <!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+            <div class="ui grid"><div class="column"></div></div>
+        <!-- $$$$$$$$$$$$$$$$$$$$$$ -->
+        <!-- $$$$$$$$$$$$$$$$$$$$$$ -->
+    <table class="ui violet selectable table">
+        <thead>
+          <tr><th>App name</th>
+          <th>Name/Email used</th>
+          <th>Password used</th>
+        </tr></thead><tbody>
+            {% for tab in table %}
+            <tr>
+                <td>{{ tab.appname }}</td>
+                <td>{{ tab.nameused }}</td>
+                <td>{{ tab.passwordused }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td>No password saved yet</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+        <!-- $$$$$$$$$$$$$$$$$$$$$$$ -->
+        </div>
+        <div class="two column"></div>
+    </div>
     
+    <!-- $$$$$$$$$$$$$$$$$$$$$$$ -->
+    <div class="ui grid"><div class="column"></div></div>
+    <!-- $$$$$$$$$$$$$$$$$$$$$$$ -->
+    <!-- modals -->
+    <div class="ui mini modal">
+        <div class="header" style="color: indigo; display: flex; justify-content: center; align-items: center;">add new password</div>
+        <div class="content">
+            <form class="ui form" action="{{ url_for('insert_data') }}" method="post">
+                <div class="field">
+                  <label>Name of the app</label>
+                  <input type="text" name="appName" autocomplete="off" placeholder="Google" class="one_b">
+                </div>
+                <div class="field">
+                    <label>Name/email used</label>
+                    <input type="text" name="nameUsed" placeholder="name@gmail.com" autocomplete="off" class="one_b">
+                </div>
+                <div class="field">
+                  <label>Password used</label>
+                  <input type="text" name="passwordUsed" placeholder="Password" class="one_b">
+                  {% for u in user %}
+                  <input type="text" name="id" id="" value="{{ u.id }}" hidden>
+                  {% endfor %}
+                </div>
+                <!-- $$$$$$$$$$$$$$$$$$ -->
+                <div class="ui grid"><div class="column"></div></div>
+                <!-- $$$$$$$$$$$$$$$$$$ -->
+                <div class="field">
+                    <input class="ui violet button" type="submit" value="submit" style="width: 100%;">
+                </div>
+                <div class="ui horizontal divider" style="color: #800a80;">Thank You for trusting us</div>
+            </form>
+        </div>
+    </div>
+    <!-- $$$$$$$$$$$$$$$$$$$$$$$$ -->
+{% endblock body %}
+<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+{% block script %}
+<script>
+    // modal
+    function modal() {
+        $(function(){
+            $('.mini.modal').modal('show');
+            $('.one_b').prop('required', true);
+        });
+    };
+</script>
 {% endblock script %}
-<!-- ========================== -->
+<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$ -->

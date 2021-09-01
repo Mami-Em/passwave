@@ -1,33 +1,135 @@
 {% extends 'layouts.html' %}
 {% block title %}
-    Welcome
+    PassSave
 {% endblock title %}
-<!-- ========================== -->
+<!-- $$$$$$$$$$$$$$$$$$$$$ -->
 {% block head %}
-    <h1>You are not logged in.</h1>
 {% endblock head %}
-<!-- ========================== -->
+<!-- $$$$$$$$$$$$$$$$$$$$$ -->
 {% block body %}
-    <!-- not a member yet -->
-    <h3>Not registered yet?</h3>
-    <h6>Please fill the form</h6>
-    <form action="{{ url_for('registering') }}" onsubmit="return check()" method="post">
-        Choose your username:
-        <input type="text" autocomplete="off" name="name" id="" placeholder="username" required>
-        <br>
-        Choose your password:
-        <input type="password" autocomplete="off" name="password" id="password" placeholder="password" required>
-        <br>
-        Confirm your password:
-        <input type="password" autocomplete="off" name="" id="password_check" required>
-        <br>
-        <input type="submit" value="register">
-    </form>
-    <h2>Or</h2>
-    <h3>Already have an accout</h3>
-    <a href="{{ url_for('login') }}">login</a>
+    <!-- $$$$$$$$$$$$$$$$$$ -->
+    <div class="ui grid"><div class="column"></div></div>
+    <!-- $$$$$$$$$$$$$$$$$$ -->
+    <div class="ui grid"><div class="column"></div></div>
+    <!-- $$$$$$$$$$$$$$$$$$ -->
+    
+    <!-- register or login -->
+    <div class="ui grid stackable"><div class="one wide column"></div>
+        <div class="nine wide column inverted">
+            <!-- $$$$$$$$$$$$$$$$$$$$ -->
+            <div class="ui grid"><div class="column"></div></div>
+            <!-- text area -->
+            <h1 class="ui violet centered header" style="font-size: 50px;">
+                <div class="content">
+                  Welcome to PassSave
+                  <div class="sub header" style="font-size: 20px;">PassSave is a web application that allows you to save your passwords</div>
+                </div>
+            </h1>
+            <!-- $$$$$$$$$$$$$$$$$$$$ -->
+            <div class="ui grid"><div class="column"></div></div>
+            <!-- $$$$$$$$$$$$$$$$$$$$ -->
+            <div class="ui divider"></div>
+            <!-- $$$$$$$$$$$$$$$$$$$$ -->
+            <div class="ui grid"><div class="column"></div></div>
+            <!-- $$$$$$$$$$$$$$$$$$$$ -->
+            <style>
+                .image {
+                    font-size: 80px;
+                    color: #7700ff;
+                }
+                i {
+                    padding: 20px;
+                    position: relative;
+                    left: 50%;
+                    transform: translate(-50%);
+                }
+                .content {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            </style>
+            <div class="ui three cards stackable">
+                <!-- one -->
+                <a href="" class="violet card">
+                    <div class="image"><i class="fas fa-shield-alt"></i></div>
+                    <div class="content"><p class="icon header">Secure</p></div>
+                </a>
+                <!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+                <!-- one -->
+                <a href="" class="violet card">
+                    <div class="image"><i class="fas fa-fire"></i></div>
+                    <div class="content"><p class="header">Easy</p></div>
+                </a>
+                <!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+                <!-- one -->
+                <a href="" class="violet card">
+                    <div class="image"><i class="fas fa-check-circle"></i></div>
+                    <div class="content"><p class="header">Free</p></div>
+                </a>
+                <!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+            </div>
+            <!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+        </div>
+        <!-- <div class="one wide column"></div> -->
+        <div class="five wide column">
+            <!-- head -->
+            <div class="ui attached violet message">
+                <h3 class="ui centered header">Sign in for free!</h3>
+            </div>
+            <!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+            <form class="ui form attached segment" action="{{ url_for('registering') }}" onsubmit="return check()" method="post">
+                <div class="field">
+                  <label>Userame</label>
+                  <input type="text" autocomplete="off" name="name" placeholder="username" class="one_a" required>
+                </div>
+                <div class="field">
+                  <label>Password</label>
+                  <input type="password" autocomplete="off" name="password" placeholder="Password" class="one_a" id="password" required>
+                </div>
+                <div class="field">
+                    <label>Confirm Your Password</label>
+                    <input type="password" autocomplete="off" name="" placeholder="Password" class="one_a" id="password_check" required>
+                </div>
+                <button class="ui violet  button" type="submit" style="width: 100%;">Sign in</button>
+                <div class="ui horizontal divider">Or</div>
+                <div class="field">
+                    <a onclick="modal()" class="ui blue button" id="login" style="width: 100%;">Log in</a>
+                </div>
+              </form>
+        </div>
+        <!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+        <div class="ui grid"><div class="column"></div></div>
+        <div class="ui grid"><div class="column"></div></div>
+    </div>
+    <!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+    <!-- modals -->
+    <div class="ui mini modal">
+        <div class="header" style="color: indigo; display: flex; justify-content: center; align-items: center;">Log in</div>
+        <div class="content">
+            <form class="ui form" action="{{ url_for('login_process_') }}" method="post">
+                <div class="field">
+                  <label>Userame</label>
+                  <input type="text" autocomplete="off" name="name" placeholder="First Name" class="one_b">
+                </div>
+                <div class="field">
+                  <label>Password</label>
+                  <input type="password" autocomplete="off" name="password" placeholder="Password" class="one_b">
+                </div>
+                <!-- $$$$$$$$$$$$$$$$$$$ -->
+                <div class="ui grid"><div class="column"></div></div>
+                <!-- $$$$$$$$$$$$$$$$$$$ -->
+                <div class="field">
+                    <input class="ui violet button" type="submit" value="Login" style="width: 100%;">
+                </div>
+                <div class="ui horizontal divider" style="color: #b876b8;">Thank You for trusting us</div>
+            </form>
+        </div>
+    </div>
+
+    <!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 {% endblock body %}
-<!-- ========================== -->
+<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 {% block script %}
 <script>
     // check
@@ -41,7 +143,15 @@
             return false;
         };
     };
+    // modal
+    function modal() {
+        $(function(){
+                $('.mini.modal').modal('show');
+        });
+        $('.one_a').prop('required',false);
+        $('.one_b').prop('required',true);
+    };
 </script>
     
 {% endblock script %}
-<!-- ========================== -->
+<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->

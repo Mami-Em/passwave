@@ -1,0 +1,93 @@
+{% extends 'layouts.html' %}
+{% block title %}
+    
+{% endblock title %}
+<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+{% block head %}
+<div class="ui segment" style="border-radius: 0;">
+    <div class="ui inverted violet menu">
+        {% for u in user %}
+        <a href="#" class="item"><i class="fas fa-user-secret fa-2x"></i></a>
+        {% endfor %}
+      <div class="right violet menu">
+        <a class="active item"><i class="fas fa-cogs fa-2x"></i></a>
+        <a href="{{ url_for('logout') }}" class="item"><i class="fas fa-sign-out-alt fa-2x"></i></a>
+      </div>
+    </div>
+</div> 
+{% endblock head %}
+<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+{% block body %}
+<div class="ui grid"><div class="column"></div></div>
+<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+<div class="ui grid stackable">
+    <div class="two column"></div>
+    <div class="twelve wide column centered">
+        <!-- header -->
+        <h2 class="ui icon grey header" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+            <i class="fas fa-cogs fa-3x"></i>
+            <div class="content">Account Settings</div>
+        </h2>
+        <!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+        <div class="ui grid"><div class="column"></div></div>
+        <!-- $$$$$$$$$$$$$$$$ -->
+        <div class="ui divider"></div>
+        <!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+        <div class="ui grid"><div class="column"></div></div>
+    <!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+<div class="ui three column grid stackable">
+    <div class="column">
+        <div class="ui raised link centered card">
+            <div class="content">
+              <div class="header">Update</div>
+              <div class="meta"><span class="category">Change</span></div>
+              <div class="description"><p>Update your username or your password</p></div>
+            </div>
+            <div class="extra content">
+                <i class="fas fa-arrow-circle-right fa-3x right floated"></i>
+                <style>
+                    .right {
+                        color: #6d26e0;
+                    }
+                </style>
+            </div>
+          </div>
+    </div>
+    <div class="column">
+        <div class="ui raised link centered card">
+            <div class="content">
+              <div class="header">Delete</div>
+              <div class="meta"><span class="category">Remove</span></div>
+              <div class="description"><p>Delete your account</p></div>
+            </div>
+            <div class="extra content">
+                <i class="fas fa-arrow-circle-right fa-3x right floated"></i>
+            </div>
+          </div>
+    </div>
+    <div class="column">
+        <div class="ui raised link centered card">
+            <div class="content">
+              <div class="header">Terms and Conditions</div>
+              <div class="meta"><span class="category">Privaccy</span></div>
+              <div class="description"><p>Look at the agreement you made</p></div>
+            </div>
+            <div class="extra content">
+                <i class="fas fa-arrow-circle-right fa-3x right floated"></i>
+            </div>
+          </div>
+    </div>
+  </div>
+<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+    <!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+    </div>
+    <div class="two column"></div>
+</div>
+<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+<div class="ui grid"><div class="column"></div></div>
+{% endblock body %}
+<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+{% block script %}
+    
+{% endblock script %}
+<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->

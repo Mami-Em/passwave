@@ -4,8 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="../static/all.css">
+    <link rel="stylesheet" href="../static/all.min.css">
+    <link rel="stylesheet" href="../static/components/form.css">
+    <link rel="stylesheet" href="../static/components/modal.min.css">
+    <link rel="stylesheet" href="../static/components/transition.min.css">
+    <link rel="stylesheet" href="../static/components/dimmer.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/modal.min.css" integrity="sha512-CPLGe+O/BzgzHJKpdBXUuewmlxhlEfQ00zuYg1vcGCjOo88mqMeO1qa8q397ifxm18D12Go8OF7A42CjOKEl/g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>{% block title %}
-        Passwave
+        PassSave
     {% endblock title %}</title>
 </head>
 <body>
@@ -15,6 +25,20 @@
     {% block body %}
         
     {% endblock body %}
+    <!-- footer and signature -->
+    <div class="ui violet inverted vertical segment" style="position:fixed; bottom: 0; width:100%;">
+        <div class="ui center aligned container">
+            <p>&copy;Copyright Mami. 2021 | Wouaou Inc </p>
+        </div>
+    </div>
+    <!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+    <script src="../static/all.js"></script>
+    <script src="../static/all.min.js"></script>
+    <script src="../static/components/modal.js"></script>
+    <script src="../static/components/modal.min.js"></script>
+    <script src="../static/components/transition.js"></script>
+    <script src="../static/components/dimmer.min.js"></script>
+    <script src="../static/components/transition.min.js"></script>
     {% block script %}
         
     {% endblock script %}

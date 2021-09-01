@@ -16,6 +16,7 @@ db = scoped_session(sessionmaker(bind=engine))
 # session
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
+app.secret_key = "SECRET_KEY"
 
 Session(app)
 
@@ -29,38 +30,47 @@ def registering():
     password = request.form.get("password")
     db.execute(f"INSERT INTO human (name, password) VALUES ('{name}', '{password}')")
     db.commit()
-    return redirect("login")
-
-@app.route("/login")
-def login():
-    return render_template("login.html")
+    return redirect("/")
 
 # ========================================================================
 @app.route("/login_process_", methods = ["POST"])
 def login_process_():
     name = request.form.get("name")
     user = db.execute(f"SELECT * FROM human WHERE name = '{name}'").fetchall()
-    if user:
-        return render_template("passcheck.html", user = user)
+    for u in user:
+        password = u.password
+        passowrd_check = request.form.get("password")
+        if user:
+            if password == passowrd_check:
+                session["name"] = u.name
+                return redirect(f"/homepage/{u.name}")
+        else:
+            session["name"] = None
+            return render_template("error.html", message = "Wrong password!")
     else:
         return render_template("error.html", message = "No such user!")
-# ========================================================================
-# to update
-@app.route("/loin_process__", methods = ["POST"])
-def login_process__():
-    password = request.form.get("password")
-    user = db.execute(f"SELECT * FROM human WHERE password = '{password}'").fetchall()
-    for u in user:
-        session["name"] = u.name
-        return redirect(f"/homepage/{u.name}")
 # =========================================================================
+
+# @app.route("/settings")
+# def settings():
+#     if not session.get("name"):
+#         return redirect("/")
+#     name = session["name"]
+#     user = db.execute(f"SELECT * FROM human WHERE name = {name}").fetchall()
+#     return render_template("settings.html", user = user)
 
 @app.route("/homepage/<string:name>")
 def homepage(name):
     if not session.get("name"):
         return redirect("/")
-    user = db.execute(f"SELECT * FROM human WHERE name = '{name}'").fetchall()
-    return render_template("home.html", user = user)
+    elif session["name"] == name:
+        user = db.execute(f"SELECT * FROM human WHERE name = '{name}'").fetchall()
+        for u in user:
+            id = u.id
+        table = db.execute(f"SELECT * FROM databae WHERE user_id = {id}").fetchall()
+        return render_template("table.html", user = user, table = table)
+    else:
+        return render_template("error.html", message = "You do not have access to this data")
 
 @app.route("/insert_data0", methods = ["POST"])
 def insert_data():
@@ -72,14 +82,11 @@ def insert_data():
     id = request.form.get("id")
     db.execute(f"INSERT INTO databae (user_id, appName, nameUsed, passwordUsed) VALUES ({id},'{appName}','{nameUsed}','{passwordUsed}')")
     db.commit()
-    table = db.execute(f"SELECT * FROM databae WHERE user_id = {id}")
-    return render_template("table.html", table = table)
-
-@app.route("/list")
-def list():
-    return render_template("table.html")
+    user = db.execute(f"SELECT * FROM human WHERE id = {id}")
+    for u in user:
+        return redirect(f"homepage/{u.name}")
 
 @app.route("/logout")
 def logout():
-    session["name"] = None
+    session.pop("name", None)
     return redirect("/")
