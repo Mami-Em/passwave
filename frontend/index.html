@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="../static/all.css">
+    <link rel="stylesheet" href="../static/all.min.css">
+    <link rel="stylesheet" href="../static/components/form.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../static/components/modal.min.css">
+    <link rel="stylesheet" href="../static/components/transition.min.css">
+    <link rel="stylesheet" href="../static/components/dimmer.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/modal.min.css" integrity="sha512-CPLGe+O/BzgzHJKpdBXUuewmlxhlEfQ00zuYg1vcGCjOo88mqMeO1qa8q397ifxm18D12Go8OF7A42CjOKEl/g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Frontend</title>
+</head>
+<body>
+    <!-- ================== -->
+    <div class="ui grid"><div class="column"></div></div>
+    <!-- ================== -->
+    <!-- ================== -->
+    <div class="ui grid"><div class="column"></div></div>
+    <!-- ================== -->
+    <!-- ================== -->
+    
+    <!-- register or login -->
+    <div class="ui grid stackable"><div class="one wide column"></div>
+        <div class="nine wide column inverted">
+            <!-- =========== -->
+            <div class="ui grid"><div class="column"></div></div>
+            <!-- text area -->
+            <h1 class="ui violet centered header" style="font-size: 50px;">
+                <div class="content">
+                  Welcome to PassSave
+                  <div class="sub header" style="font-size: 20px;">PassSave is a web application that allows you to save your passwords</div>
+                </div>
+            </h1>
+            <!-- ================== -->
+            <div class="ui grid"><div class="column"></div></div>
+            <!-- ================== -->
+            <div class="ui divider"></div>
+            <!-- ================== -->
+            <div class="ui grid"><div class="column"></div></div>
+            <!-- ================== -->
+            <style>
+                .image {
+                    font-size: 80px;
+                    color: #7700ff;
+                }
+                i {
+                    padding: 20px;
+                    position: relative;
+                    left: 50%;
+                    transform: translate(-50%);
+                }
+                .content {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            </style>
+            <div class="ui three cards stackable">
+                <!-- one -->
+                <a href="" class="violet card">
+                    <div class="image"><i class="fas fa-shield-alt"></i></div>
+                    <div class="content"><p class="icon header">Secure</p></div>
+                </a>
+                <!-- ============ -->
+                <!-- one -->
+                <a href="" class="violet card">
+                    <div class="image"><i class="fas fa-fire"></i></div>
+                    <div class="content"><p class="header">Easy</p></div>
+                </a>
+                <!-- ============ -->
+                <!-- one -->
+                <a href="" class="violet card">
+                    <div class="image"><i class="fas fa-check-circle"></i></div>
+                    <div class="content"><p class="header">Free</p></div>
+                </a>
+                <!-- ============ -->
+            </div>
+            <!-- === -->
+        </div>
+        <!-- <div class="one wide column"></div> -->
+        <div class="five wide column">
+            <!-- head -->
+            <div class="ui attached violet message">
+                <h3 class="ui centered header">Sign in for free!</h3>
+            </div>
+            <!-- ============= -->
+            <form class="ui form attached segment" action="{{ url_for('registering') }}" onsubmit="return check()" method="post">
+                <div class="field">
+                  <label>Userame</label>
+                  <input type="text" autocomplete="off" name="name" placeholder="username" class="one_a" required>
+                </div>
+                <div class="field">
+                  <label>Password</label>
+                  <input type="password" autocomplete="off" name="password" placeholder="Password" class="one_a" id="password" required>
+                </div>
+                <div class="field">
+                    <label>Confirm Your Password</label>
+                    <input type="password" autocomplete="off" name="" placeholder="Password" class="one_a" id="password_check" required>
+                </div>
+                <button class="ui violet  button" type="submit" style="width: 100%;">Sign in</button>
+                <div class="ui horizontal divider">Or</div>
+                <div class="field">
+                    <a onclick="modal()" class="ui blue button" id="login" style="width: 100%;">Log in</a>
+                </div>
+              </form>
+        </div>
+        <!-- ================== -->
+        <div class="ui grid"><div class="column"></div></div>
+        <div class="ui grid"><div class="column"></div></div>
+    </div>
+    <!-- ========================== -->
+    <!-- modals -->
+    <div class="ui mini modal">
+        <div class="header" style="color: indigo; display: flex; justify-content: center; align-items: center;">Log in</div>
+        <div class="content">
+            <form class="ui form">
+                <div class="field">
+                  <label>Userame</label>
+                  <input type="text" name="name" placeholder="First Name" class="one_b">
+                </div>
+                <div class="field">
+                  <label>Password</label>
+                  <input type="text" name="password" placeholder="Password" class="one_b">
+                </div>
+                <!-- ================== -->
+                <div class="ui grid"><div class="column"></div></div>
+                <!-- ================== -->
+                <div class="field">
+                    <input class="ui violet button" type="submit" value="Login" style="width: 100%;">
+                </div>
+                <div class="ui horizontal divider" style="color: #b876b8;">Thank You for trusting us</div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ========== -->
+    
+    
+    <!-- ================== -->
+    <div class="ui violet inverted vertical segment" style="position:fixed; bottom: 0; width:100%;">
+        <div class="ui center aligned container">
+            <p>&copy;Copyright Mami. 2021 | Wouaou Inc </p>
+        </div>
+    </div>
+    
+    <script src="../static/all.js"></script>
+    <script src="../static/all.min.js"></script>
+    <script src="../static/components/modal.js"></script>
+    <script src="../static/components/modal.min.js"></script>
+    <script src="../static/components/transition.js"></script>
+    <script src="../static/components/dimmer.min.js"></script>
+    <script src="../static/components/transition.min.js"></script>
+    <script>
+        // modal function
+        function modal() {
+            $(function(){
+                $('.mini.modal').modal('show');
+            });
+            $('.one_a').prop('required',false);
+            $('.one_b').prop('required',true);
+        };
+        
+    </script>
+</body>
+</html>
