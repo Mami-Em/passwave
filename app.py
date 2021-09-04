@@ -134,7 +134,7 @@ def updating_process(id):
                 if password_check == pas.password :
                     db.execute(f"UPDATE databae SET appname = '{appname}', nameused = '{nameused}', passwordused = '{passwordused}' WHERE id = {id}")
                     db.commit()
-                    return redirect(url_for("homepage", name = f'{user}', message="successfully deleted!"))
+                    return redirect(url_for("homepage", name = f'{user}', message="successfully updated!"))
                 else :
                     session.pop("name", None)
                     return render_template("error.html", message = "Wrong password! Please reconnect again, Your session has closed!")
