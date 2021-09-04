@@ -7,10 +7,10 @@
 {% if session.name %}
 <div class="ui segment" style="border-radius: 0;">
   <div class="ui inverted violet menu">
-      <a href="{{ url_for('homepage', name = session.name) }}" class="item"><i class="fas fa-user-secret fa-2x"></i></a>
+      <a href="{{ url_for('homepage', name = session.name) }}" class="item"><i class="fas fa-user-secret"></i></a>
     <div class="right violet menu">
-      <a class="active item"><i class="fas fa-cogs fa-2x"></i></a>
-      <a href="{{ url_for('logout') }}" class="item"><i class="fas fa-sign-out-alt fa-2x"></i></a>
+      <a class="active item"><i class="fas fa-cogs"></i></a>
+      <a href="{{ url_for('logout') }}" class="item"><i class="fas fa-sign-out-alt"></i></a>
     </div>
   </div>
 </div>
@@ -29,7 +29,7 @@
     <div class="twelve wide column centered">
         <!-- header -->
         <h2 class="ui icon grey header" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
-            <i class="fas fa-cogs fa-3x"></i>
+            <i class="fas fa-cogs fa-2x"></i>
             <div class="content">Account Settings</div>
         </h2>
         <!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
@@ -48,7 +48,7 @@
               <div class="description"><p>Update your username or your password</p></div>
             </div>
             <div class="extra content">
-                <i class="fas fa-arrow-circle-right fa-3x right floated"></i>
+                <i class="fas fa-arrow-circle-right fa-2x right floated"></i>
                 <style>
                     .right {
                         color: #6d26e0;
@@ -65,7 +65,7 @@
               <div class="description"><p>Delete your account</p></div>
             </div>
             <div class="extra content">
-                <i class="fas fa-arrow-circle-right fa-3x right floated"></i>
+                <i class="fas fa-arrow-circle-right fa-2x right floated"></i>
             </div>
           </div>
     </div>
@@ -77,7 +77,7 @@
               <div class="description"><p>Look at the agreement you made</p></div>
             </div>
             <div class="extra content">
-                <i class="fas fa-arrow-circle-right fa-3x right floated"></i>
+                <i class="fas fa-arrow-circle-right fa-2x right floated"></i>
             </div>
           </div>
     </div>

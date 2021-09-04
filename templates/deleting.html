@@ -1,0 +1,55 @@
+{% extends 'layouts.html' %}
+{% block title %}
+    
+{% endblock title %}
+<!-- ========================== -->
+{% block head %}
+    
+{% endblock head %}
+<!-- ========================== -->
+{% block body %}
+    <!-- DELETE -->
+    <style>
+        .span {
+            color: red;
+        }
+    </style>
+    <div class="ui mini modal" id="fafao">
+        <div class="header" style="color: red; display: flex; justify-content: center; align-items: center;">Are you sure to delete ?</div>
+        <div class="content">
+            {% for del in delete %}
+            <p><span class="span">App name :</span> {{ del.appname}}</p>
+            <p><span class="span">Name/email used :</span> {{ del.nameused }}</p>
+            <p><span class="span">password used :</span> {{ del.passwordused }}</p>
+            <form class="ui form" action="{{ url_for('deleting_process', id = del.id )}}" method="POST">
+                {% endfor %}
+                <div class="field">
+                  <label>Type your password to connfirm :</label>
+                  <input type="password" name="password" placeholder="Password" class="one_d">
+                </div>
+                <!-- $$$$$$$$$$$$$$$$$$ -->
+                <div class="ui grid"><div class="column"></div></div>
+                <!-- $$$$$$$$$$$$$$$$$$ -->
+                <div class="field">
+                    <input class="ui pink button" type="submit" value="delete" style="width: 100%;">
+                </div>
+                <div class="ui horizontal divider" style="color: #800a80;">or</div>
+            </form>
+            <div class="field">
+                <a href="{{ url_for('homepage', name = session.name) }}" class="ui cancel button" style="width: 100%;">Cancel</a>
+            </div>
+        </div>
+    </div>
+    <!-- $$$$$$$$$$$$$$$$$$$$$$$$ -->
+{% endblock body %}
+<!-- ========================== -->
+{% block script %}
+    <script>
+        //delete_modal
+            $(function() {
+                $('#fafao').modal('show');
+                $('.one_d').prop('required', true);
+            });
+    </script>
+{% endblock script %}
+<!-- ========================== -->

@@ -1,0 +1,58 @@
+{% extends 'layouts.html' %}
+{% block title %}
+    
+{% endblock title %}
+<!-- ========================== -->
+{% block head %}
+    
+{% endblock head %}
+<!-- ========================== -->
+{% block body %}
+    <!-- UPDATE -->
+    <div class="ui mini modal" id="update">
+        <div class="header" style="color: indigo; display: flex; justify-content: center; align-items: center;">Update</div>
+        <div class="content">
+            {% for data in databae %}
+            <form class="ui form" action="{{ url_for('updating_process', id = data.id) }}" method="POST">
+                <div class="field">
+                    <label>app Name</label>
+                    <input type="text" name="appName" autocomplete="off" value="{{ data.appname }}">
+                </div>
+                <div class="field">
+                    <label>name/email used</label>
+                    <input type="text" name="nameUsed" autocomplete="off" value="{{ data.nameused }}">
+                </div>
+                <div class="field">
+                    <label>password used</label>
+                    <input type="text" name="passwordUsed" autocomplete="off" value="{{ data.passwordused }}">
+                </div>
+                <div class="field">
+                  <label>Type your password to connfirm :</label>
+                  <input type="password" autocomplete="off" name="password" placeholder="Password" class="one_u">
+                </div>
+                <!-- $$$$$$$$$$$$$$$$$$ -->
+                <div class="ui grid"><div class="column"></div></div>
+                <!-- $$$$$$$$$$$$$$$$$$ -->
+                <div class="field">
+                    <input class="ui violet button" type="submit" value="update" style="width: 100%;">
+                </div>
+                <div class="ui horizontal divider" style="color: #800a80;">or</div>
+            </form>
+            {% endfor %}
+            <div class="field">
+                <a href="{{ url_for('homepage', name = session.name) }}" class="ui cancel button" style="width: 100%;">Cancel</a>
+            </div>
+        </div>
+    </div>
+    <!-- $$$$$$$$$$$$$$$$$$$$$$$$ -->
+{% endblock body %}
+<!-- ========================== -->
+{% block script %}
+    <script>
+        $(function() {
+            $('#update').modal('show');
+            $('.one_u').prop('required', true);
+        });
+    </script>
+{% endblock script %}
+<!-- ========================== -->

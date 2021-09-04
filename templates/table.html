@@ -7,12 +7,12 @@
 <!-- header -->
 <div class="ui segment" style="border-radius: 0;">
     <div class="ui inverted violet menu">
-        <a class="active item"><i class="fas fa-user-secret fa-2x"></i></a>
+        <a class="active item"><i class="fas fa-user-secret"></i></a>
         <div class="right violet menu">
             {% for u in user %}
-            <a href="{{ url_for('settings') }}" class="item"><i class="fas fa-cogs fa-2x"></i></a>
+            <a href="{{ url_for('settings') }}" class="item"><i class="fas fa-cogs"></i></a>
             {% endfor %}
-            <a href="{{ url_for('logout') }}" class="item"><i class="fas fa-sign-out-alt fa-2x"></i></a>
+            <a href="{{ url_for('logout') }}" class="item"><i class="fas fa-sign-out-alt"></i></a>
         </div>
     </div>
 </div> 
@@ -20,6 +20,9 @@
 {% endblock head %}
 <!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 {% block body %}
+
+        
+    
     <!-- $$$$$$$$$$$$$$$$$ -->
     <div class="ui grid"><div class="column"></div></div>
     <!-- $$$$$$$$$$$$$$$$$ -->
@@ -28,7 +31,7 @@
         <div class="twelve wide column centered">
             <!-- header -->
             <h2 class="ui icon grey header" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
-                <i class="fas fa-user-secret fa-3x"></i>
+                <i class="fas fa-user-secret fa-2x"></i>
                 {% for u in user %}
                 <div class="content">You are Loged in as {{ u.name }}</div>
                 {% endfor %}
@@ -38,6 +41,7 @@
                 <button class="ui violet button" onclick="modal()">new passwords</button>
             </div>
             <!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+            {{ message }}
             <!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
             <div class="ui grid"><div class="column"></div></div>
         <!-- $$$$$$$$$$$$$$$$$$$$$$ -->
@@ -53,6 +57,9 @@
                 <td>{{ tab.appname }}</td>
                 <td>{{ tab.nameused }}</td>
                 <td>{{ tab.passwordused }}</td>
+                <td class="center aligned"><a class="ui button violet" href="{{ url_for('update', id = tab.id) }}">update</a>
+                    <a class="ui button pink" href="{{ url_for('delete', id = tab.id) }}">delete</a>
+                </td>
             </tr>
             {% else %}
             <tr>
@@ -62,6 +69,7 @@
         </tbody>
       </table>
         <!-- $$$$$$$$$$$$$$$$$$$$$$$ -->
+        <div class="ui grid"><div class="column"></div></div><div class="ui grid"><div class="column"></div></div>
         </div>
         <div class="two column"></div>
     </div>
@@ -70,7 +78,7 @@
     <div class="ui grid"><div class="column"></div></div>
     <!-- $$$$$$$$$$$$$$$$$$$$$$$ -->
     <!-- modals -->
-    <div class="ui mini modal">
+    <div class="ui mini modal" id="add">
         <div class="header" style="color: indigo; display: flex; justify-content: center; align-items: center;">add new password</div>
         <div class="content">
             <form class="ui form" action="{{ url_for('insert_data') }}" method="post">
@@ -95,11 +103,15 @@
                 <div class="field">
                     <input class="ui violet button" type="submit" value="submit" style="width: 100%;">
                 </div>
-                <div class="ui horizontal divider" style="color: #800a80;">Thank You for trusting us</div>
+                <div class="ui horizontal divider" style="color: #800a80;">or</div>
             </form>
+            <div class="actions">
+                <button class="ui cancel button" style="width: 100%;">Cancel</button>
+            </div>
         </div>
     </div>
-    <!-- $$$$$$$$$$$$$$$$$$$$$$$$ -->
+    
+    
 {% endblock body %}
 <!-- $$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 {% block script %}
