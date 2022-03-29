@@ -143,4 +143,5 @@ def updating_process(id):
 @app.route("/logout")
 def logout():
     session.pop("name", None)
+    #more function should go here
     return redirect("/")
