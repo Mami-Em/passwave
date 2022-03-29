@@ -144,3 +144,7 @@ def updating_process(id):
 def logout():
     session.pop("name", None)
     return redirect("/")
+
+#to do:
+# - session
+# - error handling ui
